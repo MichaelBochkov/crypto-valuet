@@ -1,0 +1,33 @@
+{
+    "balance": [{
+            "id": 1,
+            "name": "Bitcoin",
+            "quantity": 10
+        },
+        {
+            "id": 2,
+            "name": "Ethereum",
+            "quantity": 25
+        },
+        {
+            "id": 3,
+            "name": "Dash",
+            "quantity": 12
+        },
+        {
+            "id": 4,
+            "name": "Zcash",
+            "quantity": 118
+        },
+        {
+            "id": 5,
+            "name": "THETA",
+            "quantity": 1000
+        },
+        {
+            "id": 6,
+            "name": "Litecoin",
+            "quantity": 250
+        }
+    ]
+}
