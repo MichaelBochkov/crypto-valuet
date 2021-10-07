@@ -2,8 +2,9 @@ import React from 'react'
 import CoinsItem from './coinsItem/CoinsItem'
 
 function CoinsContent(props) {
-  let users = JSON.parse(JSON.stringify(props.Users.balance))
-  let dataChart = users
+  const users = JSON.parse(JSON.stringify(props.Users.balance))
+  const dataCoins = props.dataCoinsChart
+  const dataChart = users
     .slice()
     .sort((a, b) => { return b.quantity - a.quantity })
     .slice(0, 4)
@@ -13,7 +14,7 @@ function CoinsContent(props) {
       {
         dataChart.map(user => {
           return (
-            <CoinsItem user={user} key={user.id} />
+            <CoinsItem user={user} key={user.id} dataCoins={dataCoins} />
           )
         })
       }

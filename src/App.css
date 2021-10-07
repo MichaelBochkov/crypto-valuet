@@ -214,6 +214,7 @@ form {
         position: absolute;
         left: -300px;
         transition: all 600ms ease-out;
+        background-color: #030440;
     }
     header.active {
         width: 50%;
