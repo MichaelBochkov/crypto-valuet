@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/crypto-valuet/static/css/main.e7e9d1ba.chunk.css",
-    "main.js": "/crypto-valuet/static/js/main.6f77c8e9.chunk.js",
-    "main.js.map": "/crypto-valuet/static/js/main.6f77c8e9.chunk.js.map",
+    "main.css": "/crypto-valuet/static/css/main.b07f94cd.chunk.css",
+    "main.js": "/crypto-valuet/static/js/main.8f7242f7.chunk.js",
+    "main.js.map": "/crypto-valuet/static/js/main.8f7242f7.chunk.js.map",
     "runtime-main.js": "/crypto-valuet/static/js/runtime-main.c9771082.js",
     "runtime-main.js.map": "/crypto-valuet/static/js/runtime-main.c9771082.js.map",
-    "static/js/2.968ce977.chunk.js": "/crypto-valuet/static/js/2.968ce977.chunk.js",
-    "static/js/2.968ce977.chunk.js.map": "/crypto-valuet/static/js/2.968ce977.chunk.js.map",
+    "static/js/2.cedbe51c.chunk.js": "/crypto-valuet/static/js/2.cedbe51c.chunk.js",
+    "static/js/2.cedbe51c.chunk.js.map": "/crypto-valuet/static/js/2.cedbe51c.chunk.js.map",
     "index.html": "/crypto-valuet/index.html",
-    "static/css/main.e7e9d1ba.chunk.css.map": "/crypto-valuet/static/css/main.e7e9d1ba.chunk.css.map",
-    "static/js/2.968ce977.chunk.js.LICENSE.txt": "/crypto-valuet/static/js/2.968ce977.chunk.js.LICENSE.txt",
+    "static/css/main.b07f94cd.chunk.css.map": "/crypto-valuet/static/css/main.b07f94cd.chunk.css.map",
+    "static/js/2.cedbe51c.chunk.js.LICENSE.txt": "/crypto-valuet/static/js/2.cedbe51c.chunk.js.LICENSE.txt",
     "static/media/CoinIcons.325965be.svg": "/crypto-valuet/static/media/CoinIcons.325965be.svg",
     "static/media/Icons.ebef1605.svg": "/crypto-valuet/static/media/Icons.ebef1605.svg",
     "static/media/messagesIcon.aa3e86f8.svg": "/crypto-valuet/static/media/messagesIcon.aa3e86f8.svg",
@@ -18,8 +18,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c9771082.js",
-    "static/js/2.968ce977.chunk.js",
-    "static/css/main.e7e9d1ba.chunk.css",
-    "static/js/main.6f77c8e9.chunk.js"
+    "static/js/2.cedbe51c.chunk.js",
+    "static/css/main.b07f94cd.chunk.css",
+    "static/js/main.8f7242f7.chunk.js"
   ]
 }
