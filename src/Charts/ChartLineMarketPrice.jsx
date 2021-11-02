@@ -25,25 +25,24 @@ function ChartLineMarketPrice(props) {
       if (dataCoins[prop].monthChart === valueMonth && dataCoins[prop].yearChart === valueYear) {
         newChart.push(dataCoins[prop])
       }
-      setDataChart(newChart)
     }
-  }, [valueMonth, valueYear])
+    setDataChart(newChart)
+  }, [props.dataCoinsCourseHistory, valueMonth, valueYear, selectedCoinChart])
 
-  const CustomTooltip = ({ active, payload }) => {
-    if (active) {
-      return (
-        <ul className='custom-tooltip'>
-          <li>
-            <span>{`Cost: ${payload[0].value} $`}</span>
-            <span>{`Date: ${payload[0].payload.dateChart}`}</span>
-          </li>
-        </ul>
-      )
-    }
-    return null
-  }
 
-  console.log(dataChart);
+  // const CustomTooltip = ({ active, payload }) => {
+  //   if (active) {
+  //     return (
+  //       <ul className='custom-tooltip'>
+  //         <li>
+  //           <span>{`Cost: ${payload[0].value} $`}</span>
+  //           <span>{`Date: ${payload[0].payload.dateChart}`}</span>
+  //         </li>
+  //       </ul>
+  //     )
+  //   }
+  //   return null
+  // }
 
   return (
     <div className='wrapper_market_price'>
@@ -66,7 +65,7 @@ function ChartLineMarketPrice(props) {
       <div className='line_chart_market_price' >
         <ResponsiveContainer>
           <LineChart data={dataChart}>
-            <Tooltip cursor={false} content={CustomTooltip} active={true} />
+            {/* <Tooltip cursor={false} content={CustomTooltip} active={true} /> */}
             <Line dataKey='priceUsd' type='monotone' stroke='#018FFF' strokeWidth={3} dot={{ strokeWidth: 5 }} />
             <YAxis dataKey='priceUsd' type='number' domain={['dataMin', 'dataMax']} axisLine={false} tickLine={false} />
             <XAxis dataKey='dayChart' padding={{ left: 40, right: 40 }} axisLine={false} tickLine={false} />
