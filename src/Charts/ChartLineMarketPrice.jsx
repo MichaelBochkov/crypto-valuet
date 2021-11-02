@@ -4,9 +4,7 @@ import dateFormat from 'dateformat';
 import { chartNavCoins, chartCoins, month, years, date, chartNavYear, chartNavMonth } from '../untility/Consts'
 
 function ChartLineMarketPrice(props) {
-  const dataCoins = props.dataCoinsCourseHistory
-
-  const newChart = []
+  const dataCoins = JSON.parse(JSON.stringify(props.dataCoinsCourseHistory))
 
   const [dataChart, setDataChart] = useState()
   const [selectedCoinChart, setSelectedCoinChart] = useState(chartCoins[0])
@@ -15,6 +13,7 @@ function ChartLineMarketPrice(props) {
   const [valueYear, setValueYear] = useState(years[1])
 
   useEffect(() => {
+    const newChart = []
     for (let prop in dataCoins) {
       dataCoins[prop] = {
         dayChart: dateFormat(dataCoins[prop].date, 'mmm dd'),
@@ -28,7 +27,9 @@ function ChartLineMarketPrice(props) {
       }
     }
     setDataChart(newChart)
-  }, [dataCoins, newChart, selectedCoinChart, valueMonth, valueYear])
+  }, [selectedCoinChart, valueMonth, valueYear])
+
+  console.log(dataChart);
 
   const CustomTooltip = ({ active, payload }) => {
     if (active) {

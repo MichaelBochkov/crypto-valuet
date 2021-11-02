@@ -18,7 +18,7 @@ export function loadDataCoins() {
 
 export function loadDataCourseHistory() {
     return async dispatch => {
-        const response = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1577836800&to=1634601600');
+        const response = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1577836800&to=1635811200');
         const jsonData = await response.json();
 
         dispatch({
