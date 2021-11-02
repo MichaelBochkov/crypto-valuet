@@ -6,6 +6,7 @@ import { chartNavCoins, chartCoins, month, years, date, chartNavYear, chartNavMo
 function ChartLineMarketPrice(props) {
   const dataCoins = JSON.parse(JSON.stringify(props.dataCoinsCourseHistory))
 
+  const newChart = []
   const [dataChart, setDataChart] = useState()
   const [selectedCoinChart, setSelectedCoinChart] = useState(chartCoins[0])
 
@@ -13,7 +14,6 @@ function ChartLineMarketPrice(props) {
   const [valueYear, setValueYear] = useState(years[1])
 
   useEffect(() => {
-    const newChart = []
     for (let prop in dataCoins) {
       dataCoins[prop] = {
         dayChart: dateFormat(dataCoins[prop].date, 'mmm dd'),
@@ -25,11 +25,9 @@ function ChartLineMarketPrice(props) {
       if (dataCoins[prop].monthChart === valueMonth && dataCoins[prop].yearChart === valueYear) {
         newChart.push(dataCoins[prop])
       }
+      setDataChart(newChart)
     }
-    setDataChart(newChart)
-  }, [selectedCoinChart, valueMonth, valueYear])
-
-  console.log(dataChart);
+  }, [valueMonth, valueYear])
 
   const CustomTooltip = ({ active, payload }) => {
     if (active) {
@@ -44,6 +42,8 @@ function ChartLineMarketPrice(props) {
     }
     return null
   }
+
+  console.log(dataChart);
 
   return (
     <div className='wrapper_market_price'>
