@@ -21,9 +21,8 @@ li {
 header {
     grid-area: header;
     display: flex;
-    flex-wrap: wrap;
+    height: auto;
     flex-direction: column;
-    height: 960px;
     margin: 0;
     background: linear-gradient(0.32deg, rgba(28, 35, 64, 0) -5.79%, #1C0F54 114.59%);
     filter: drop-shadow(0px -5px 25px rgba(0, 3, 32, 0.5));
@@ -129,12 +128,6 @@ header>hr {
     justify-content: space-between;
 }
 
-form {
-    display: flex;
-    flex-wrap: wrap;
-    width: 400px;
-}
-
 .search {
     width: 360px;
     height: 42px;
@@ -165,17 +158,44 @@ form {
 .wrapper_notifications {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .wrapper_notifications>img {
     width: 30px;
     height: 30px;
-    margin-top: 15px;
     cursor: pointer;
 }
 
 .wrapper_notifications>img:first-child {
     margin-right: 30px;
+}
+
+.wrapper-messages {
+    display: none;
+}
+
+.wrapper-messages.active {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 9%;
+    right: 1.9%;
+    width: 500px;
+    height: 250px;
+    border-radius: 10px;
+    background: radial-gradient(46.41% 73.99% at 46.63% 48.05%, #20135C 0%, #160546 92.82%);
+    box-shadow: 0px 15px 40px rgb(0 0 0 / 25%);
+}
+
+.wrapper-messages.active>p {
+    height: 0;
+    margin: 0;
+    align-self: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #616A8B;
 }
 
 .menu_burger {
@@ -218,7 +238,6 @@ form {
     }
     header.active {
         width: 50%;
-        height: 100vh;
         left: 0;
         margin: 0;
         z-index: 1;
@@ -233,7 +252,6 @@ form {
     .wrapper_notifications>img {
         width: 30px;
         height: 30px;
-        margin-top: 15px;
         margin-right: auto;
         cursor: pointer;
     }
@@ -242,7 +260,6 @@ form {
         position: relative;
         width: 30px;
         height: 20px;
-        margin-top: 20px;
         float: right;
         cursor: pointer;
         z-index: 10;
@@ -282,5 +299,84 @@ form {
         bottom: 50%;
         transform: rotate(45deg) translate(0px, 50%);
         background-color: #54669C;
+    }
+}
+
+@media (max-width: 580px) {
+    .search_message_notification {
+        flex-direction: column;
+        align-items: center;
+    }
+    form {
+        order: 2;
+    }
+    .wrapper_notifications {
+        margin-bottom: 20px;
+    }
+    .wrapper_content_center {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+    header.active {
+        width: 60%;
+    }
+    .wrapper_menu>hr {
+        width: 65%;
+        margin-left: 30px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 375px) {
+    .wrapper_container {
+        max-width: 375px;
+    }
+    .wrapper_content_top {
+        max-width: 375px;
+    }
+    .wrapper_content_center {
+        max-width: 375px;
+    }
+    header.active {
+        width: 60%;
+    }
+    header>hr {
+        margin-left: 40px;
+    }
+    .wrapper_menu>hr {
+        width: 55%;
+    }
+    form {
+        height: 50px;
+    }
+    .btn_search {
+        left: 90%;
+        top: -70%;
+    }
+}
+
+@media (max-width: 320px) {
+    .wrapper_container {
+        max-width: 320px;
+    }
+    .wrapper_content_top {
+        max-width: 320px;
+    }
+    .wrapper_content_center {
+        max-width: 320px;
+    }
+    form {
+        width: 300px;
+    }
+    .search {
+        width: 300px;
+    }
+    header.active {
+        width: 74%;
+    }
+    .wrapper_menu>hr {
+        width: 65%;
     }
 }

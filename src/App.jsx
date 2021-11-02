@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { loadDataCoins, loadDataCourseHistory } from './redux/actions'
 import './App.css';
 import Menu from './Menu/Menu'
 import { menuItem } from './untility/Consts'
@@ -8,8 +10,25 @@ import OverViewContent from './overViewContent/OverViewContent';
 import WalletsContent from './walletsContent/walletsContent'
 
 function App() {
+    const dataCoinsChart = useSelector(state => {
+        const { loadDataCoinsReducer } = state;
+        return loadDataCoinsReducer.dataCoins;
+    })
+
+    const dataCoinsCourseHistory = useSelector(state => {
+        const { loadDataCoinsCourseHistoryReducer } = state;
+        return loadDataCoinsCourseHistoryReducer.dataCoinsHistory;
+    })
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(loadDataCoins());
+        dispatch(loadDataCourseHistory());
+    }, [])
 
     const [open, setOpen] = useState(false)
+
     const handleOnClick = () => {
         setOpen(!open)
     }
@@ -46,6 +65,9 @@ function App() {
                     </form>
                     <div className='wrapper_notifications'>
                         <img src={MessagesIcon} alt='' />
+                        <div className={`wrapper-messages ${open ? '' : ''}`}>
+                            <p>Not Messages</p>
+                        </div>
                         <img src={NotificationIcon} alt='' />
                         <div onClick={handleOnClick} className={`menu_burger ${open ? 'active' : ''}`}>
                             <span></span>
@@ -55,8 +77,8 @@ function App() {
                 <hr />
             </section>
             <section className='wrapper_content_center'>
-                <OverViewContent />
-                {/* <WalletsContent /> */}
+                <OverViewContent dataCoinsChart={dataCoinsChart} dataCoinsCourseHistory={dataCoinsCourseHistory} />
+                {/* <WalletsContent dataCoinsChart={dataCoinsChart} /> */}
             </section>
         </div>
     )

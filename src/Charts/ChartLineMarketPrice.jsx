@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Brush } from 'recharts';
+import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Brush, Tooltip } from 'recharts';
 import dateFormat from 'dateformat';
-import { date, month, years, chartNavYear, chartNavMonth } from '../untility/Consts'
+import { chartNavCoins, chartCoins, month, years, date, chartNavYear, chartNavMonth } from '../untility/Consts'
 
 function ChartLineMarketPrice(props) {
-  const dataCoins = JSON.parse(JSON.stringify(props.dataCoinsCourseHistory))
-  let newChart = []
+  const dataCoins = props.dataCoinsCourseHistory
 
-  const [dataChart, setDataChart] = useState(newChart)
-  const [valueMonth, setvalueMonth] = useState(month[date.getMonth()])
-  const [valueYear, setvalueYear] = useState(years[1])
+  const newChart = []
+
+  const [dataChart, setDataChart] = useState()
+  const [selectedCoinChart, setSelectedCoinChart] = useState(chartCoins[0])
+
+  const [valueMonth, setValueMonth] = useState(month[date.getMonth()])
+  const [valueYear, setValueYear] = useState(years[1])
 
   useEffect(() => {
     for (let prop in dataCoins) {
@@ -25,20 +28,36 @@ function ChartLineMarketPrice(props) {
       }
     }
     setDataChart(newChart)
-  }, [valueMonth, valueYear])
+  }, [dataCoins, newChart, selectedCoinChart, valueMonth, valueYear])
+
+  const CustomTooltip = ({ active, payload }) => {
+    if (active) {
+      return (
+        <ul className='custom-tooltip'>
+          <li>
+            <span>{`Cost: ${payload[0].value} $`}</span>
+            <span>{`Date: ${payload[0].payload.dateChart}`}</span>
+          </li>
+        </ul>
+      )
+    }
+    return null
+  }
 
   return (
     <div className='wrapper_market_price'>
       <div className='wrapper_market_price_content_top'>
         <h2>Market</h2>
-        <p className='btn_coin'>Bitcoin</p>
+        <select className='navigation_chart' value={selectedCoinChart} onChange={event => setSelectedCoinChart(event.target.value)}>
+          {chartNavCoins}
+        </select>
         <div className='month_chart'>
-          <select className='navigation_chart' value={valueMonth} onChange={(event) => setvalueMonth(event.target.value)}>
+          <select className='navigation_chart' value={valueMonth} onChange={event => setValueMonth(event.target.value)}>
             {chartNavMonth}
           </select>
         </div>
         <div className='year_chart'>
-          <select className='navigation_chart' value={valueYear} onChange={(event) => setvalueYear(event.target.value)}>
+          <select className='navigation_chart' value={valueYear} onChange={event => setValueYear(event.target.value)}>
             {chartNavYear}
           </select>
         </div>
@@ -46,10 +65,11 @@ function ChartLineMarketPrice(props) {
       <div className='line_chart_market_price' >
         <ResponsiveContainer>
           <LineChart data={dataChart}>
+            <Tooltip cursor={false} content={CustomTooltip} active={true} />
             <Line dataKey='priceUsd' type='monotone' stroke='#018FFF' strokeWidth={3} dot={{ strokeWidth: 5 }} />
-            <YAxis dataKey='priceUsd' type='number' domain={[0, 'dataMax + 30000']} axisLine={false} tickLine={false} />
-            <XAxis dataKey='dayChart' interval={0} padding={{ left: 40, right: 40 }} axisLine={false} tickLine={false} />
-            <Brush startIndex={0} endIndex={9} travellerWidth={0} />
+            <YAxis dataKey='priceUsd' type='number' domain={['dataMin', 'dataMax']} axisLine={false} tickLine={false} />
+            <XAxis dataKey='dayChart' padding={{ left: 40, right: 40 }} axisLine={false} tickLine={false} />
+            <Brush startIndex={0} endIndex={9} travellerWidth={1} />
           </LineChart>
         </ResponsiveContainer>
       </div>

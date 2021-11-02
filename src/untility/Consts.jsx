@@ -1,4 +1,5 @@
 import Icons from '../Menu/MenuIcon/MenuIcons';
+import usersCoins from '../json/userBalance.json'
 
 const colors = ['#018FFF', '#FAD679', '#F5FBFE']
 
@@ -6,6 +7,12 @@ const date = new Date()
 const day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const years = ['2020', '2021']
+
+const chartNavCoins = usersCoins.balance.map((coin, index) => {
+    return (
+        <option key={`item-${index}`} value={coin.name}>{coin.name}</option>
+    )
+})
 
 const chartNavYear = years.map((year, index) => {
     return (
@@ -16,6 +23,12 @@ const chartNavYear = years.map((year, index) => {
 const chartNavMonth = month.map((month, index) => {
     return (
         <option key={`item-${index}`} value={month}>{month}</option>
+    )
+})
+
+const chartCoins = chartNavCoins.map(coin => {
+    return (
+        coin.props.value
     )
 })
 
@@ -51,4 +64,4 @@ const menuItem = [{
 },
 ]
 
-export { colors, date, day, month, years, menuItem, chartNavYear, chartNavMonth }
+export { colors, date, day, month, years, menuItem, chartNavCoins, chartCoins, chartNavYear, chartNavMonth }

@@ -5,17 +5,17 @@ import Users from '../json/userBalance.json'
 import Wallets from './wallets/wallets'
 import ChartLineSpending from '../Charts/ChartLineSpending'
 
-function WalletContent() {
+function WalletContent(props) {
 
   return (
     <div className='wrapper_wallet_content'>
       <h2>Wallets</h2>
       <div className='wrapper_info_wallets'>
         <div className='wraper_donut_chart'>
-          <ChartDonutBalance Users={Users} />
+          <ChartDonutBalance Users={Users} dataCoinsChart={props.dataCoinsChart} />
         </div>
         <div className='wrapper_wallets'>
-          <Wallets Users={Users} />
+          <Wallets Users={Users} dataCoinsChart={props.dataCoinsChart} />
         </div>
       </div>
       <div className='wrapper_spendings_transactioins'>

@@ -2,23 +2,23 @@ import React from 'react'
 import SpendingJson from '../json/spending.json'
 import { LineChart, Line, ResponsiveContainer, Tooltip, XAxis, Brush } from 'recharts';
 
-let data = SpendingJson.spendings
-
-const CustomTooltip = ({ active, payload }) => {
-    if (active) {
-        return (
-            <ul className='custom-tooltip'>
-                <li>
-                    <span>{`Spending: ${payload[0].value} $`}</span>
-                    <span>{`Date: ${payload[0].payload.date}`}</span>
-                </li>
-            </ul>
-        )
-    }
-    return null
-}
-
 function ChartLineSpending() {
+    const data = SpendingJson.spendings
+
+    const CustomTooltip = ({ active, payload }) => {
+        if (active) {
+            return (
+                <ul className='custom-tooltip'>
+                    <li>
+                        <span>{`Spending: ${payload[0].value} $`}</span>
+                        <span>{`Date: ${payload[0].payload.date}`}</span>
+                    </li>
+                </ul>
+            )
+        }
+        return null
+    }
+
     return (
         <div className='line_chart'>
             <p>

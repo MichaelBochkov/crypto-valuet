@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux';
-// import { loadDataCoins } from '../redux/actions'
 import { colors } from '../untility/Consts'
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer, Label } from 'recharts';
 

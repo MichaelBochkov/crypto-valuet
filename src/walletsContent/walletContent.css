@@ -56,6 +56,10 @@
         transform: scale(1.5, 1.5) translate(-70px, 40px);
     }
     
+    .wraper_donut_chart>.donut_chart>.recharts-responsive-container>.recharts-wrapper>.recharts-surface>.recharts-pie:nth-child(2)>g>.custom_label {
+        transform: translate(0px, -20px);
+    }
+    
     .wraper_donut_chart>.donut_chart>.recharts-responsive-container>.recharts-wrapper>.recharts-legend-wrapper>ul {
         width: 100%;
         margin: 0;
@@ -177,21 +181,22 @@
         border-radius: 5px;
     }
     
-    .wrapper_spendings>.line_chart>p {
-        display: none;
-    }
-    
     .wrapper_spendings>.line_chart {
         height: 100%;
         margin-top: 0;
     }
     
-    .wrapper_spendings>.line_chart>.recharts-responsive-container>.recharts-wrapper>.recharts-surface>.recharts-line {
-        transform: scale(1, 0.90);
+    .wrapper_spendings>.line_chart>.recharts-responsive-container {
+        max-width: 100%;
+        min-height: 80%;
+    }
+    
+    .wrapper_spendings>.line_chart>.recharts-responsive-container>.recharts-wrapper>.recharts-surface>.recharts-cartesian-axis {
+        transform: translate(0px, 30px);
     }
     
     .wrapper_spendings>.line_chart>.recharts-responsive-container>.recharts-wrapper>.recharts-surface>.recharts-brush {
-        transform: scale(0.98, 0.25) translate(10px, 1250px);
+        transform: scale(0.98, 0.25) translate(10px, 1200px);
     }
     
     .wrapper_transactioins {

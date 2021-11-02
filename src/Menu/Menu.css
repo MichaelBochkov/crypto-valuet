@@ -59,3 +59,15 @@
 .menu_item.active>hr {
     display: block;
 }
+
+@media (max-width: 425px) {
+    .menu_item {
+        width: 230px;
+    }
+}
+
+@media (max-width: 375px) {
+    .menu_item {
+        width: 200px;
+    }
+}

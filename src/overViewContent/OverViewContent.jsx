@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { loadDataCoins, loadDataCourseHistory } from '../redux/actions'
+// import { useDispatch, useSelector } from 'react-redux';
+// import { loadDataCoins, loadDataCourseHistory } from '../redux/actions'
 import './OverViewContent.css'
 import { day, month, date } from '../untility/Consts'
 import CoinsContent from './coinsContent/CoinsContent'
@@ -10,24 +10,7 @@ import ChartDonutBalance from '../Charts/ChartDonutBalance'
 import ChartLineSpending from '../Charts/ChartLineSpending'
 import ChartLineMarketPrice from '../Charts/ChartLineMarketPrice'
 
-function OverViewContent() {
-
-  const dataCoinsChart = useSelector(state => {
-    const { loadDataCoinsReducer } = state;
-    return loadDataCoinsReducer.dataCoins;
-  })
-
-  const dataCoinsCourseHistory = useSelector(state => {
-    const { loadDataCoinsCourseHistoryReducer } = state;
-    return loadDataCoinsCourseHistoryReducer.dataCoinsHistory;
-  })
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadDataCoins());
-    dispatch(loadDataCourseHistory());
-  }, [])
+function OverViewContent(props) {
 
   return (
     <div className='wrapper_overview_balance_coins'>
@@ -42,7 +25,7 @@ function OverViewContent() {
         <div className='wrapper_balance'>
           <h3>Balance</h3>
           <div className='wrapper_donut_chart'>
-            <ChartDonutBalance Users={Users} dataCoinsChart={dataCoinsChart} />
+            <ChartDonutBalance Users={Users} dataCoinsChart={props.dataCoinsChart} />
           </div>
         </div>
         <div className='wrapper_spending'>
@@ -52,10 +35,10 @@ function OverViewContent() {
           </div>
           <ChartLineSpending />
         </div>
-        <CoinsContent Users={Users} dataCoinsChart={dataCoinsChart} />
+        <CoinsContent Users={Users} dataCoinsChart={props.dataCoinsChart} />
       </div>
       <div className='wrapper_market_news'>
-        <ChartLineMarketPrice dataCoinsCourseHistory={dataCoinsCourseHistory} />
+        <ChartLineMarketPrice dataCoinsCourseHistory={props.dataCoinsCourseHistory} />
         <div className='wrapper_recent_news'>
           <div className='wrapper-recent_news_top'>
             <h2>Recent News</h2>

@@ -12,10 +12,10 @@ export const loadDataCoinsReducer = (state = initialState, action) => {
         case LOAD_DATA_COINS:
             const dataCoinsNew = action.data.map(res => {
                 return {
-                    id: res.rank,
+                    id: res.id,
                     name: res.name,
                     symbol: res.symbol,
-                    priceUsd: res.priceUsd
+                    priceUsd: res.current_price
                 };
             })
             return {

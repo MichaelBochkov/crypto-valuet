@@ -3,15 +3,15 @@ import Wallet from './wallet/wallet'
 
 
 function Wallets(props) {
-  let users = JSON.parse(JSON.stringify(props.Users.balance))
-
+  const users = JSON.parse(JSON.stringify(props.Users.balance))
+  const CostCoins = props.dataCoinsChart
 
   return (
     <div className='wrapper_wallet'>
       {
         users.map(user => {
           return (
-            <Wallet user={user} key={user.id} />
+            <Wallet user={user} key={user.id} CostCoins={CostCoins} />
           )
         })
       }

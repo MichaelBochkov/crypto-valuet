@@ -12,8 +12,8 @@ export const loadDataCoinsCourseHistoryReducer = (state = initialState, action) 
         case LOAD_DATA_COINS_COURSE_HISTORY:
             const dataCoinsNew = action.data.map(res => {
                 return {
-                    date: res.date,
-                    priceUsd: res.priceUsd
+                    date: res[0],
+                    priceUsd: res[1]
                 };
             })
             return {

@@ -50,7 +50,7 @@ function CoinsContent({ user, dataCoins }) {
             </div>
             <div className='wrapper_coin_content_right'>
                 <p>1 {DataCost.symbol} = {DataCost.costUsdOneCoin} $</p>
-                <p>1 BTC = {DataCost.btcPrice} {DataCost.symbol}</p>
+                <p>1 {DataCost.symbol} = {DataCost.btcPrice} BTC</p>
             </div>
         </div>
     )
